@@ -17,7 +17,7 @@ const displayCategory = (data) => {
        let btn = document.createElement('button');
        btn.innerHTML = ` 
        
-       <input type="radio" aria-label="${element.category}" class="btn px-8" />
+       <input type="radio" aria-label="${element.category}" class="btn px-8 rounded-lg" />
        `;
 
        categoryContainer.appendChild(btn);
@@ -26,3 +26,4 @@ const displayCategory = (data) => {
 }
 
 loadAllCategory();
+
