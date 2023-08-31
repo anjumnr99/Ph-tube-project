@@ -39,6 +39,7 @@ const displayDetailsOfCategory = (details) => {
     const defaultData = details.data;
 
     const noDataContainer = document.getElementById('no-data-container ');
+    noDataContainer.innerText = " ";
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerText = " ";
 
