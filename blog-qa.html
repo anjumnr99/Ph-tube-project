@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cupcake">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +13,38 @@
         <hr class="w-96 ">
     </div>
     <div>
-        <ul class="list-decimal text-2xl space-y-6">
-            <li>Discuss the scope of var, let, and const
-                <p class="text-lg text-gray-600"><span class="underline font-semibold">Ans</span> : Am not telling you</p>
+        <ul class="list-decimal text-2xl space-y-6 my-10 mx-5 px-11">
+            <li>Discuss the scope of  <span class="bg-slate-200 font-normal px-2 ">var</span>, <span class="bg-slate-200 font-normal px-2 ">let</span>, and <span class="bg-slate-200 font-normal px-2 ">const</span> .<br>
+                <p class="text-lg text-gray-600"><span class="underline font-semibold">Ans</span> : If you want to reassign the value of variable then you can use. It has functional scope.  <span class="bg-slate-200 font-normal px-2 ">var</span> can be redeclare. If you declare a  <span class="bg-slate-200 font-normal px-2 ">var</span> variable from inside a function , you can find the variable outside the function. Also you can update the value of that variable inside or outside function. You can declare the variable without initializing and it's default value is undefined. <br><br>
+
+                    <span class="bg-slate-200 font-normal px-2 ">let</span> variable has block scope. It can be declare without initializing but it will give referenceError by default. It can't be redeclare into the same scope. <span class="bg-slate-200 font-normal px-2 ">let</span> variable can not be access outside the variable.
+                <br><br>
+
+                <span class="bg-slate-200 font-normal px-2 ">const</span>  variable it's also has block scope. But it can't be declare without initializing. It can't be re declare, cant't update the value.It's also not accessible if you don not initialize the value. And yeah, of course! you can't access or update this variable outside the block.
+                    
+                <br><br>
+
+                But the <span class="bg-slate-200 font-normal px-2 ">let</span> and <span class="bg-slate-200 font-normal px-2 ">const</span>  is more preferable for using.
+
+                    <span class="bg-slate-200 font-normal px-2 ">const</span> 
+                </p>
             </li>
 
-            <li>Tell us the use cases of null and undefined</li>
-            <li>What do you mean by REST API?</li>
+            <li>Tell us the use cases of null and undefined
+                <p class="text-lg text-gray-600"><span class="underline font-semibold">Ans</span> : If a variable value is null that means it's empty. It's an assignment value which represent no value. It can be use for object reference. 
+                <br>
+                On the other hand, if any variable declared but not assigned it's then it's shows undefined. Function by default return the undefined. 
+                </p>
+            </li>
+            <li>What do you mean by REST API?
+                <p class="text-lg text-gray-600"><span class="underline font-semibold">Ans</span> : By the REST API called , server transfer the data to the client request source and using HTTP request to access and use data. Using get, post, put and delete we can reading, crating, updating and deleting data. 
+                </p>
+            </li>
         </ul>
        
     </div>
+
+    
     
 </body>
 </html>
