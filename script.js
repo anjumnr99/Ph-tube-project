@@ -8,7 +8,8 @@ const loadAllCategory = async () => {
 // Show all Category
 
 const displayCategory = (data) => {
-
+    
+    // console.log(data);
     const categoryContainer = document.getElementById('category-container');
 
     data?.data.forEach(element => {
@@ -34,7 +35,7 @@ const loadCategoryDetails = async (categoryId) => {
 };
 
 const displayDetailsOfCategory = (details) => {
-    console.log(details.data);
+    // console.log(details.data);
 
     const defaultData = details.data;
 
@@ -45,7 +46,8 @@ const displayDetailsOfCategory = (details) => {
 
 
     defaultData.length !== 0 ? defaultData.forEach(element => {
-        console.log(element);
+        // console.log(element);
+        // console.log(element.others.posted_date);
 
         const div = document.createElement('div');
 
@@ -53,7 +55,17 @@ const displayDetailsOfCategory = (details) => {
 
         div.innerHTML = ` 
         
-        <figure class="rounded-lg "><img class ="h-[200px] w-full" src="${element.thumbnail}" alt="" /></figure>
+        <figure class="rounded-lg relative "><img class =" h-[200px] w-full" src="${element.thumbnail}" alt="" /> 
+
+        <div class = "absolute bottom-0 right-0 mr-3 mb-3  ${element.others.posted_date ? `bg-[#1c1c1c]` : " "} w-auto whitespace-nowrap  px-2 py-1  text-center  rounded text-base font-normal text-white ">
+         ${element.others.posted_date ? countTime(element.others.posted_date) : " "} 
+       </div>
+        </figure>
+
+        
+
+         
+       
         <div class="card-body p-0 mt-5">
            <div class="flex gap-3">
             <div class="avatar">
@@ -83,10 +95,25 @@ const displayDetailsOfCategory = (details) => {
 
 };
 
+const countTime = (time) =>{
+    const h = Math.floor(time/3600);
+    const m = Math.floor((time%3600)/60);
 
+    
+    return h+"hrs "+m+" min "+" ago";
+}
 
 
 
 
 loadAllCategory();
+loadCategoryDetails('1000');
 
+            
+            
+
+// const second =  ${element.others.posted_date};
+// const hoursFloat = second / 3600 ;
+// const hours = parseInt(hoursFloat);
+// const minFloat = (hoursFloat - hours ) * 60; 
+// const min = parseInt(minFloat);
