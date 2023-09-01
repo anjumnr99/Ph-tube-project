@@ -1,14 +1,36 @@
 
+
+// navbar section
+const navContainer = document.getElementById('navbar-container');
+let navDiv = document.createElement('div');
+navDiv.classList = `navbar bg-base-100 mt-12`;
+navDiv.innerHTML = `  
+    <div class="navbar-start">
+            <a href="index.html" class="flex gap-2 ">
+                <img src="./logo.svg" alt="">
+                <p class="text-4xl tex font-bold"><span class="text-[#FF1F3D]">PH</span> Tube</p>
+            </a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <button  id="sort-btn" class="btn rounded-lg">Sort by view</button>
+        </div>
+        <div class="navbar-end">
+            <button onclick="window.location.href='blog-qa.html'" class="btn rounded-lg hover:bg-[#e4223c] bg-[#FF1F3D] text-white"></a>Blog</button>
+        </div>
+    `;
+navContainer.appendChild(navDiv);  
+
 const loadAllCategory = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/videos/categories');
     const data = await res.json();
     displayCategory(data);
+    
 };
 
 // Show all Category
 
 const displayCategory = (data) => {
-    
+
     // console.log(data);
     const categoryContainer = document.getElementById('category-container');
 
@@ -31,23 +53,37 @@ const displayCategory = (data) => {
 const loadCategoryDetails = async (categoryId) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
     const data = await res.json();
-    displayDetailsOfCategory(data);
+    const defaultData = data.data;
+    // console.log(defaultData);
+        document.getElementById('sort-btn').addEventListener('click', function(){
+        const sortedData = defaultData;
+        const sorted = sortedData.sort((a,b)=>parseFloat(b.others.views) - parseFloat(a.others.views));
+            displayDetailsOfCategory(sorted);
+        })
+        
+    
+         displayDetailsOfCategory(defaultData);
+   
+    
+   
+ 
 };
+
 
 const displayDetailsOfCategory = (details) => {
     // console.log(details.data);
 
-    const defaultData = details.data;
+    // const unSortedData = details;
 
     const noDataContainer = document.getElementById('no-data-container ');
     noDataContainer.innerText = " ";
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerText = " ";
 
-
-    defaultData.length !== 0 ? defaultData.forEach(element => {
+    
+    details.length !== 0 ? details.forEach(element => {
         // console.log(element);
-        // console.log(element.others.posted_date);
+       
 
         const div = document.createElement('div');
 
@@ -62,10 +98,6 @@ const displayDetailsOfCategory = (details) => {
        </div>
         </figure>
 
-        
-
-         
-       
         <div class="card-body p-0 mt-5">
            <div class="flex gap-3">
             <div class="avatar">
@@ -81,39 +113,32 @@ const displayDetailsOfCategory = (details) => {
                 <div class="badge  border-none w-fit"><img src="${element.authors[0].verified ? './verified.svg' : ' '}"></div>
                 </div>
             
-                
-
                 <p class="text-base font-normal text-[#171717b3] ">${element.others.views} views</p>
             </div>
            </div>
         </div> `;
         cardContainer.appendChild(div);
 
-    }) : noDataContainer.innerHTML = 
-     ` <img class="w-20" src="./nodata.svg" alt="">
+    }) : noDataContainer.innerHTML =
+    ` <img class="w-20" src="./nodata.svg" alt="">
     <h1 class="text-3xl text-center font-bold">Oops!! Sorry, There is no <br> content here</h1>` ;
-
+    
+    isSort = false;
 };
 
-const countTime = (time) =>{
-    const h = Math.floor(time/3600);
-    const m = Math.floor((time%3600)/60);
 
-    
-    return h+"hrs "+m+" min "+" ago";
+
+
+
+const countTime = (time) => {
+    const h = Math.floor(time / 3600);
+    const m = Math.floor((time % 3600) / 60);
+    return h + "hrs " + m + " min " + " ago";
 }
-
-
 
 
 loadAllCategory();
 loadCategoryDetails('1000');
 
-            
-            
 
-// const second =  ${element.others.posted_date};
-// const hoursFloat = second / 3600 ;
-// const hours = parseInt(hoursFloat);
-// const minFloat = (hoursFloat - hours ) * 60; 
-// const min = parseInt(minFloat);
+
